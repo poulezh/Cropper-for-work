@@ -223,34 +223,6 @@ $(function () {
   $imageUpload.on('change', readURL);
 });
 
-// let counter = 1;
-
-// function increaseCounter(value) {
-//   counter = value + 1;
-// }
-
-// increaseCounter(counter);
-
-// console.log(counter); // 2
-// increaseCounter(counter);
-// increaseCounter(counter);
-// increaseCounter(counter);
-// increaseCounter(counter);
-// increaseCounter(counter);
-// increaseCounter(counter);
-
-// console.log(counter);
-let counter = 1;
-
-function increaseCounter(value) {
-  return value + 1;
-}
-
-console.log(increaseCounter(counter)); // 2
-console.log(increaseCounter(counter)); // 2
-console.log(increaseCounter(counter)); // 2
-
-console.log(counter); // 1
 
 
 
