@@ -76,12 +76,17 @@
           </div>
           <span>Выбрать свой размер обрезанной картинки</span>
           <div class="input-group input-group-sm">
-            <label class="input-group-addon" for="dataWidth1" style="width: 60px;">Прописать ширину</label>
+            <label class="input-group-addon" for="img_w" style="width: 60px;">Прописать ширину</label>
             <input type="text" class="form-control img-w inpt_res" id="img_w" placeholder="width" value="">
           </div>
           <div class="input-group input-group-sm">
-            <label class="input-group-addon" for="dataHeight1" style="width: 60px;">Прописать высоту</label>
+            <label class="input-group-addon" for="img_h" style="width: 60px;">Прописать высоту</label>
             <input type="text" class="form-control img-h inpt_res" id="img_h" placeholder="height" value="">
+          </div>
+          <span>Выбрать свое соотношение сторон(через / )</span>
+          <div class="input-group input-group-sm">
+            <label class="input-group-addon" for="dataAspectRatio" style="width: 60px;">Соотношение</label>
+            <input type="text" class="form-control" id="dataAspectRatio" placeholder="ratio" value="">
           </div>
         </div>
 
@@ -128,6 +133,12 @@
               <input type="radio" class="sr-only" id="aspectRatio6" name="aspectRatio" value="0.6666666666666666">
               <span class="docs-tooltip" data-toggle="tooltip" title="соотношение: 2 / 3">
                 2:3
+              </span>
+            </label>
+            <label class="btn btn-primary user_size_value">
+              <input type="text" class="sr-only" id="aspectRatio7" name="aspectRatio" value="">
+              <span class="docs-tooltip" data-toggle="tooltip" title="Свое">
+                Свое
               </span>
             </label>
           </div>
@@ -236,8 +247,8 @@
                   <button id="btnSize" type="button" class="btn btn-primary" data-method="getCroppedCanvas"
                     data-option="">
                     <span class="docs-tooltip" data-toggle="tooltip" title="Свой размер обрезки">
-                      <span class="resres" id="res_w">Свой</span>
-                      <span class="resres" id="res_h">размер</span>
+                      <span class="result" id="res_w">Свой</span>
+                      <span class="result" id="res_h">размер</span>
                     </span>
                   </button>
                 </div>

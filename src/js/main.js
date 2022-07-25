@@ -1,4 +1,3 @@
-
 $(function () {
 
   var $image = $('#image');
@@ -6,6 +5,7 @@ $(function () {
   var $download2 = $('#download2');
   var $dataHeight = $('#dataHeight');
   var $dataWidth = $('#dataWidth');
+  var $dataAspectRatio = $('#dataAspectRatio')
   var $dataRotate = $('#dataRotate');
   var $dataScaleX = $('#dataScaleX');
   var $dataScaleY = $('#dataScaleY');
@@ -39,6 +39,7 @@ $(function () {
       this.buttons_methods_change()
       this.keydown_method_click()
       this.buttons_methods_oninput()
+      this.user_aspect_ratio()
       this.slider_methods()
 
     }
@@ -52,7 +53,7 @@ $(function () {
       return this.$dataTooltip.tooltip()
     }
     buttons_methods_change() {
-     this.$docsToggles.on('change', 'input', function () {
+      this.$docsToggles.on('change', 'input', function () {
         var $this = $(this);
         var name = $this.attr('name');
         var type = $this.prop('type');
@@ -131,9 +132,7 @@ $(function () {
                 if (!$download2.hasClass('disabled')) {
                   $download2.attr('href', result.toDataURL('image/png', 1));
                 }
-
               }
-
               break;
           }
 
@@ -182,14 +181,27 @@ $(function () {
         if (event.target !== img_w && event.target !== img_h) {
           return
         }
-        $('.btn_js_pic div').html(`<button id="btnSize" type="button" class="btn btn-primary" data-method="getCroppedCanvas"
-        data-option="{&quot;width&quot;: ${img_w.value}, &quot;height&quot;: ${img_h.value} }" >
+        $('.btn_js_pic div').html(
+          `<button id="btnSize" type="button" class="btn btn-primary" data-method="getCroppedCanvas"
+            data-option="{&quot;width&quot;: ${img_w.value}, &quot;height&quot;: ${img_h.value} }" >
             <span class="docs-tooltip" data-toggle="tooltip" title="">
-            <span class= "resres" id="res_w">${img_w.value}</span> x
-            <span class= "resres" id="res_h">${img_h.value}</span>
+            <span class= "result" id="res_w">${img_w.value}</span> x
+            <span class= "result" id="res_h">${img_h.value}</span>
             </span>
           </button>
-          `)
+          `
+        )
+      })
+    }
+    user_aspect_ratio() {
+      this.$docsData.on('input', event => {
+        var firtstData = Number($dataAspectRatio.val().trim().split('/')[0]) ? $dataAspectRatio.val().trim().split('/')[0] : img_w.value
+        var twoData = Number($dataAspectRatio.val().trim().split('/')[0]) ? $dataAspectRatio.val().trim().split('/')[1] : img_h.value
+        var resultRatio = firtstData / twoData
+        $('.user_size_value').html(`<input type="radio" class="sr-only" id="aspectRatio7" name="aspectRatio" value="${resultRatio ? resultRatio : ''}">
+        <span class="docs-tooltip" data-toggle="tooltip" title="Свой">
+          ${firtstData ? firtstData + ':' : 'Свое'}${twoData ? twoData : ''}
+        </span>`)
       })
     }
     slider_methods() {
@@ -202,10 +214,8 @@ $(function () {
     }
   }
   $("#myCarousel").carousel({
-    interval : false
+    interval: false
   });
-
-
 
   var init_cropper = new Cropper($image)
 
@@ -222,7 +232,6 @@ $(function () {
   }
   $imageUpload.on('change', readURL);
 });
-
 
 
 
